@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-incrementador",
@@ -6,8 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: []
 })
 export class IncrementadorComponent implements OnInit {
-  leyenda: string = 'Leyenda';
-  progreso: number = 50;
+  @Input('nombre') leyenda: string = 'Leyenda';
+  @Input() progreso: number = 50;
 
   constructor() {}
 

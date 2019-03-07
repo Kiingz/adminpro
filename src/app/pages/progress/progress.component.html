@@ -19,14 +19,16 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <app-incrementador></app-incrementador>
+                <!-- el input sin las llaves cuadradas solo permite Strings
+                para los demas tipos de datos es entre llaves cuadradas -->
+                <app-incrementador nombre="Progres Azul" [progreso]="20"></app-incrementador>
             </div>
         </div>
     </div>
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <app-incrementador></app-incrementador>
+                <app-incrementador nombre="Progres Verde"></app-incrementador>
             </div>
         </div>
     </div>
