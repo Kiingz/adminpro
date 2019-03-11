@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SettigsService } from 'src/app/services/settigs.service';
+import { link } from 'fs';
 
 @Component({
   selector: "app-account-settings",
@@ -9,7 +10,9 @@ import { SettigsService } from 'src/app/services/settigs.service';
 export class AccountSettingsComponent implements OnInit {
   constructor( public _ajustes: SettigsService ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.colocarCheck();
+  }
 
   cambiarColor(tema: string, link: any) {
     this.aplicarCheck(link);
@@ -22,5 +25,16 @@ export class AccountSettingsComponent implements OnInit {
       ref.classList.remove("working");
     }
     link.classList.add("working");
+  }
+  
+  colocarCheck(){
+    let selectores: any = document.getElementsByClassName("selector");
+    let tema = this._ajustes.ajustes.tema;
+    for (let ref of selectores) {
+      if( ref.getAttribute('data-theme') === tema){
+        ref.classList.add("working");
+        break;
+      }
+    }
   }
 }
