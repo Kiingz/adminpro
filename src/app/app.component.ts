@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SettigsService } from './services/settigs.service';
+import { SettigsService } from './services/service.index';
 
 @Component({
   selector: 'app-root',

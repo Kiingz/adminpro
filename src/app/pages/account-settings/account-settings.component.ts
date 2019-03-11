@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { SettigsService } from 'src/app/services/settigs.service';
-import { link } from 'fs';
+import { SettigsService } from 'src/app/services/service.index';
 
 @Component({
   selector: "app-account-settings",
