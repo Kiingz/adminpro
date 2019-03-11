@@ -9,11 +9,12 @@ import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./login/register.component";
 import { FormsModule } from '@angular/forms';
+import { SettigsService } from './services/settigs.service';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule, APP_ROUTES, PagesModule, FormsModule],
-  providers: [],
+  providers: [ SettigsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
