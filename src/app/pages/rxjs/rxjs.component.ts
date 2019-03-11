@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { retry, map } from "rxjs/operators";
+import { retry, map, filter } from "rxjs/operators";
 
 @Component({
   selector: "app-rxjs",
@@ -36,6 +36,15 @@ export class RxjsComponent implements OnInit {
         //   observer.error("Help!");
         // }
       }, 1000);
-    }).pipe(map(resp => resp.valor));
+    }).pipe(
+      map(resp => resp.valor),
+      filter( (valor, index) => { 
+        if( (valor % 2) === 1){
+          return true;
+        }else{
+          return false;
+        }
+      })
+    );
   }
 }
