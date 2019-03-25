@@ -11,10 +11,17 @@ export class UsuarioService {
   constructor(public http: HttpClient) {
     console.log("Servicio de usuario listo");
   }
-  
-  login( usuario: Usuario, recordar: boolean = false){
-    let url = URL_SERVICIOS + '/login';
-    return this.http.post( url, usuario);
+
+  login(usuario: Usuario, recordar: boolean = false) {
+    let url = URL_SERVICIOS + "/login";
+    return this.http.post(url, usuario).pipe(
+      map((resp: any) => {
+        localStorage.setItem("id", resp.id);
+        localStorage.setItem("token", resp.token);
+        localStorage.setItem("usuario", JSON.stringify(resp.usuario));
+        return true;
+      })
+    );
   }
 
   crearUsuario(usuario: Usuario) {
