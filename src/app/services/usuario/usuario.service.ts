@@ -11,6 +11,11 @@ export class UsuarioService {
   constructor(public http: HttpClient) {
     console.log("Servicio de usuario listo");
   }
+  
+  login( usuario: Usuario, recordar: boolean = false){
+    let url = URL_SERVICIOS + '/login';
+    return this.http.post( url, usuario);
+  }
 
   crearUsuario(usuario: Usuario) {
     let url = URL_SERVICIOS + "/usuario";
