@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
+import { UsuarioService } from "../services/service.index";
+import { Usuario } from '../models/usuario.model';
 
 declare function init_plugins();
 
@@ -13,7 +14,7 @@ declare function init_plugins();
 export class RegisterComponent implements OnInit {
   forma: FormGroup;
 
-  constructor() {}
+  constructor(public _usuarioService: UsuarioService) {}
 
   sonIguales(campo1: string, campo2: string) {
     return (group: FormGroup) => {
@@ -43,24 +44,29 @@ export class RegisterComponent implements OnInit {
       { validators: this.sonIguales("password", "password2") }
     );
     this.forma.setValue({
-      nombre: 'Alejandro',
-      correo: 'reiies094@gmail.com',
-      password: '123456',
-      password2: '123456',
+      nombre: "Alejandro",
+      correo: "reiies094@gmail.com",
+      password: "123456",
+      password2: "123456",
       condiciones: true
-
     });
   }
 
   registrarUsuario() {
-    if( this.forma.invalid ){
+    if (this.forma.invalid) {
       return;
     }
-    if( !this.forma.value.condiciones ){
-      swal('Importante', 'Debe aceptar las condiciones', 'warning');
+    if (!this.forma.value.condiciones) {
+      swal("Importante", "Debe aceptar las condiciones", "warning");
       return;
     }
-    console.log("Forma Valida: ", this.forma.valid);
-    console.log(this.forma.value);
+    let usuario = new Usuario(
+      this.forma.value.nombre,
+      this.forma.value.correo,
+      this.forma.value.password
+    );
+    this._usuarioService.crearUsuario( usuario ).subscribe( resp =>{
+      console.log(resp);
+    })
   }
 }
