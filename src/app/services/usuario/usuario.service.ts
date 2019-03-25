@@ -13,6 +13,11 @@ export class UsuarioService {
   }
 
   login(usuario: Usuario, recordar: boolean = false) {
+    if( recordar ){
+      localStorage.setItem('email', usuario.email);
+    }else{
+      localStorage.removeItem('email');
+    }
     let url = URL_SERVICIOS + "/login";
     return this.http.post(url, usuario).pipe(
       map((resp: any) => {
