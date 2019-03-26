@@ -1,3 +1,4 @@
+export { LoginGuardGuard } from "./guards/login-guard.guard";
 export { UsuarioService } from "./usuario/usuario.service";
 export { SettigsService } from "./settings/settigs.service";
 export { SharedService } from "./shared/shared.service";
