@@ -1,56 +1,57 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Observable, Subscription } from "rxjs";
-import { retry, map, filter } from "rxjs/operators";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+// tslint:disable-next-line: no-submodule-imports
+import { filter, map, retry } from 'rxjs/operators';
 
 @Component({
-  selector: "app-rxjs",
-  templateUrl: "./rxjs.component.html",
-  styles: []
+	selector: 'app-rxjs',
+	templateUrl: './rxjs.component.html',
+	styles: []
 })
 export class RxjsComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+	subscription: Subscription;
 
-  constructor() {
-    this.subscription = this.regresaObserbavle().subscribe(
-      numero => console.log("Subs ", numero),
-      error => console.error("Error en el obs", error),
-      () => console.log("El observador Termino!")
-    );
-  }
+	constructor() {
+		this.subscription = this.regresaObserbavle().subscribe(
+			(numero) => console.log('Subs ', numero),
+			(error) => console.error('Error en el obs', error),
+			() => console.log('El observador Termino!')
+		);
+	}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
 
-  regresaObserbavle(): Observable<any> {
-    return new Observable<any>(observer => {
-      let contador = 0;
-      let intervalo = setInterval(() => {
-        contador += 1;
-        const salida = {
-          valor: contador
-        };
-        observer.next(salida);
-        // if (contador === 3) {
-        //   clearInterval(intervalo);
-        //   observer.complete();
-        // }
-        // if (contador === 2) {
-        //   //clearInterval(intervalo);
-        //   observer.error("Help!");
-        // }
-      }, 1000);
-    }).pipe(
-      map(resp => resp.valor),
-      filter((valor, index) => {
-        if (valor % 2 === 1) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-    );
-  }
+	regresaObserbavle(): Observable<any> {
+		return new Observable<any>((observer) => {
+			let contador = 0;
+			const intervalo = setInterval(() => {
+				contador += 1;
+				const salida = {
+					valor: contador
+				};
+				observer.next(salida);
+				// if (contador === 3) {
+				//   clearInterval(intervalo);
+				//   observer.complete();
+				// }
+				// if (contador === 2) {
+				//   //clearInterval(intervalo);
+				//   observer.error("Help!");
+				// }
+			}, 1000);
+		}).pipe(
+			map((resp) => resp.valor),
+			filter((valor, index) => {
+				if (valor % 2 === 1) {
+					return true;
+				} else {
+					return false;
+				}
+			})
+		);
+	}
 }
