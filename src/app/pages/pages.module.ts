@@ -13,6 +13,7 @@ import { PAGES_ROUTES } from './pages.routes';
 import { ProgressComponent } from './progress/progress.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 		GraficoDonaComponent,
 		AccountSettingsComponent,
 		PromesasComponent,
-		RxjsComponent
+		RxjsComponent,
+		ProfileComponent
 	],
 	exports: [ PagesComponent, DashboardComponent, ProgressComponent, Graficas1Component, IncrementadorComponent ],
 	imports: [ SharedModule, PAGES_ROUTES, FormsModule, ChartsModule, PipesModule ]
