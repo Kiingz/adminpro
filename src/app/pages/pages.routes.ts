@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProgressComponent } from './progress/progress.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const pagesRoutes: Routes = [
 	{
@@ -45,6 +46,12 @@ const pagesRoutes: Routes = [
 				path: 'perfil',
 				component: ProfileComponent,
 				data: { titulo: 'Perfil de usuario' }
+			},
+			// Mantenimientos
+			{
+				path: 'usuarios',
+				component: UsuariosComponent,
+				data: { titulo: 'Mantenimiento de usuarios' }
 			},
 			{ path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 		]
