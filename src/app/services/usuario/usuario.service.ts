@@ -119,4 +119,9 @@ export class UsuarioService {
 		const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + termino;
 		return this.http.get(url).pipe(map((resp: any) => resp.usuarios));
 	}
+	borrarUsuario(id: string) {
+		let url = URL_SERVICIOS + '/usuario/' + id;
+		url += '?token=' + this.token;
+		return this.http.delete(url);
+	}
 }
