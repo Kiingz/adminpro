@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { SharedModule } from '../shared/shared.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
@@ -29,7 +30,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 		PromesasComponent,
 		RxjsComponent,
 		ProfileComponent,
-		UsuariosComponent
+		UsuariosComponent,
+		ModalUploadComponent
 	],
 	exports: [ PagesComponent, DashboardComponent, ProgressComponent, Graficas1Component, IncrementadorComponent ],
 	imports: [ CommonModule, SharedModule, PAGES_ROUTES, FormsModule, ChartsModule, PipesModule ]
