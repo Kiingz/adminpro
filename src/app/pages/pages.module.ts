@@ -17,6 +17,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
 
 @NgModule({
 	declarations: [
@@ -31,7 +32,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 		RxjsComponent,
 		ProfileComponent,
 		UsuariosComponent,
-		ModalUploadComponent
+		ModalUploadComponent,
+		HospitalesComponent
 	],
 	exports: [ PagesComponent, DashboardComponent, ProgressComponent, Graficas1Component, IncrementadorComponent ],
 	imports: [ CommonModule, SharedModule, PAGES_ROUTES, FormsModule, ChartsModule, PipesModule ]
