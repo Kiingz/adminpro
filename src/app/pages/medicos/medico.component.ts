@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hospital } from 'src/app/models/hospital.model';
 import { Medico } from 'src/app/models/medico.model';
 import { HospitalService, MedicoService } from 'src/app/services/service.index';
@@ -18,11 +18,27 @@ export class MedicoComponent implements OnInit {
 	constructor(
 		public _medicoService: MedicoService,
 		public _hospitalService: HospitalService,
-		public router: Router
-	) {}
+		public router: Router,
+		public activatedRoute: ActivatedRoute
+	) {
+		activatedRoute.params.subscribe((params) => {
+			const id = params['id'];
+			if (id !== 'nuevo') {
+				this.cargarMedico(id);
+			}
+		});
+	}
 
 	ngOnInit() {
 		this._hospitalService.cargarHospitales().subscribe((hospitales) => (this.hospitales = hospitales));
+	}
+
+	cargarMedico(id: string) {
+		this._medicoService.cargarMedico(id).subscribe((medico) => {
+			this.medico = medico;
+			this.medico.hospital = medico.hospital._id;
+			this.cambioHospital(this.medico.hospital);
+		});
 	}
 
 	guardarMedico(f: NgForm) {
