@@ -19,4 +19,9 @@ export class MedicoService {
 			})
 		);
 	}
+
+	buscarMedicos(termino: string) {
+		const url = URL_SERVICIOS + '/busqueda/coleccion/medicos/' + termino;
+		return this.http.get(url).pipe(map((resp: any) => resp.medicos));
+	}
 }
