@@ -27,4 +27,9 @@ export class MedicosComponent implements OnInit {
 		}
 		this._medicoService.buscarMedicos(termino).subscribe((medicos) => (this.medicos = medicos));
 	}
+
+	// falta eliminar este medico en el arreglo local, para no volver a realizar una peticion a la BD
+	borrarMedico(medico: Medico) {
+		this._medicoService.borrarMedico(medico._id).subscribe(() => this.cargarMedicos());
+	}
 }
