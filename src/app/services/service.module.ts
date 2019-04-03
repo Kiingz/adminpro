@@ -6,6 +6,7 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
 import {
 	HospitalService,
 	LoginGuardGuard,
+	MedicoService,
 	SettigsService,
 	SharedService,
 	SidebarService,
@@ -24,7 +25,8 @@ import {
 		LoginGuardGuard,
 		SubirArchivoService,
 		ModalUploadService,
-		HospitalService
+		HospitalService,
+		MedicoService
 	]
 })
 export class ServiceModule {}
