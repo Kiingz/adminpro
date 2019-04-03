@@ -13,7 +13,7 @@ import { HospitalService, MedicoService } from 'src/app/services/service.index';
 })
 export class MedicoComponent implements OnInit {
 	hospitales: Hospital[] = [];
-	medico: Medico = new Medico('', '', '', '', '');
+	medico: Medico = new Medico('', null, '', '', '');
 	hospital: Hospital = new Hospital('');
 
 	constructor(
