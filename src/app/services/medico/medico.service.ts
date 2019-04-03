@@ -31,7 +31,7 @@ export class MedicoService {
 		url += '?token=' + this._usuarioService.token;
 		return this.http.delete(url).pipe(
 			map((resp: any) => {
-				swal('Medico Borrado', resp.nombre, 'success');
+				swal('Medico Borrado', 'Medico borrado correctamente', 'success');
 				return resp;
 			})
 		);
