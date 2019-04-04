@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { LoginGuardGuard } from '../services/service.index';
+import { AdminGuard, LoginGuardGuard } from '../services/service.index';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -60,6 +60,7 @@ const pagesRoutes: Routes = [
 			{
 				path: 'usuarios',
 				component: UsuariosComponent,
+				canActivate: [ AdminGuard ],
 				data: { titulo: 'Mantenimiento de usuarios' }
 			},
 			{
