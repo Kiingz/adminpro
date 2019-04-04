@@ -1,5 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard, LoginGuardGuard } from '../services/service.index';
+import { AdminGuard, LoginGuardGuard, VerificaTokenGuard } from '../services/service.index';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,6 +18,7 @@ const pagesRoutes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent,
+		canActivate: [ VerificaTokenGuard ],
 		data: { titulo: 'Dashboard' }
 	},
 	{
