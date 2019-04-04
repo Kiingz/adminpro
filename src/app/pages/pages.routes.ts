@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { LoginGuardGuard } from '../services/service.index';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
@@ -49,6 +50,11 @@ const pagesRoutes: Routes = [
 				path: 'perfil',
 				component: ProfileComponent,
 				data: { titulo: 'Perfil de usuario' }
+			},
+			{
+				path: 'busqueda/:termino',
+				component: BusquedaComponent,
+				data: { titulo: 'Buscador' }
 			},
 			// Mantenimientos
 			{
