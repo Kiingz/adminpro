@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 import { Usuario } from '../models/usuario.model';
 import { UsuarioService } from '../services/service.index';
 
-declare function init_plugins()
+declare function init_plugins();
 
 @Component({
 	selector: 'app-register',
@@ -44,13 +44,6 @@ export class RegisterComponent implements OnInit {
 			},
 			{ validators: this.sonIguales('password', 'password2') }
 		);
-		this.forma.setValue({
-			nombre: 'Alejandro',
-			correo: 'reiies094@gmail.com',
-			password: '123456',
-			password2: '123456',
-			condiciones: true
-		});
 	}
 
 	registrarUsuario() {

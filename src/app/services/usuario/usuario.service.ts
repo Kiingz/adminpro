@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import { Usuario } from 'src/app/models/usuario.model';
 import swal from 'sweetalert';
@@ -76,6 +77,10 @@ export class UsuarioService {
 			map((resp: any) => {
 				this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
 				return true;
+			}),
+			catchError((err) => {
+				swal('Error en el login', err.error.mensaje, 'error');
+				return throwError(err);
 			})
 		);
 	}
@@ -86,6 +91,10 @@ export class UsuarioService {
 			map((resp: any) => {
 				swal('Usuario Creado!', usuario.email, 'success');
 				return resp.usuario;
+			}),
+			catchError((err) => {
+				swal(err.error.mensaje, err.error.errors.message, 'error');
+				return throwError(err);
 			})
 		);
 	}
@@ -102,6 +111,10 @@ export class UsuarioService {
 				// this.usuario = resp.usuario;
 				swal('Usuario Actualizado', usuario.nombre, 'success');
 				return true;
+			}),
+			catchError((err) => {
+				swal(err.error.mensaje, err.error.errors.message, 'error');
+				return throwError(err);
 			})
 		);
 	}
